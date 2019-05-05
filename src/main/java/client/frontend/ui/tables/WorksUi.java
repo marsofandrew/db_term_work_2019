@@ -13,7 +13,6 @@ import client.frontend.ui.dialogs.UiDialog;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.privatejgoodies.common.base.Strings;
-import com.sun.istack.internal.NotNull;
 import io.vertx.core.json.JsonObject;
 import oracle.jdbc.pooling.Tuple;
 
@@ -21,14 +20,9 @@ import javax.swing.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 public class WorksUi extends UiDbTable {
 
@@ -56,8 +50,8 @@ public class WorksUi extends UiDbTable {
     initialValues.add(element.getValues().get(headers.indexOf("SERVICE_ID")));
 
     DatePicker datePicker = new DatePicker(getDatePickerSettings());
-    UiDialog dialog = new UiDialog(Arrays.asList("ID", "DATE", "MASTER", "CAR", "SERVICE"), initialValues, "Create work");
-    dialog.putInfoMessage("Input data to create new work");
+    UiDialog dialog = new UiDialog(Arrays.asList("ID", "DATE", "MASTER", "CAR", "SERVICE"), initialValues, "Modify work");
+    dialog.putInfoMessage("Input data to modify work");
     createComboBoxes();
     dialog.changeUI(((panel, names, values, fields) -> {
       List<JTextField> forRemove = new ArrayList<>();

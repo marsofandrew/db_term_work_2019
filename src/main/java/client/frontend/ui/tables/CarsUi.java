@@ -5,9 +5,7 @@ import client.backend.objects.IdentifierType;
 import client.backend.objects.cars.Cars;
 import client.frontend.ui.dialogs.Gui;
 import client.frontend.ui.dialogs.UiDialog;
-import client.frontend.ui.dialogs.UiDialogUiChanger;
 import client.frontend.ui.dialogs.UiResultGetter;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import io.vertx.core.json.JsonObject;
 import oracle.jdbc.pooling.Tuple;
 
@@ -15,6 +13,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static client.frontend.ui.dialogs.UiDialog.getStandardConstraintsForValueGetter;
 
 public class CarsUi extends UiDbTable {
 
@@ -40,7 +40,7 @@ public class CarsUi extends UiDbTable {
       panel.remove(fields.get(fields.size() - 1));
       fields.remove(fields.size() - 1);
       checkBox.setSelected(Integer.parseInt(String.valueOf(values.get(values.size() - 1))) == 1);
-      panel.add(checkBox, dialog.getStandardConstraintsForValueGetter(fields.size()));
+      panel.add(checkBox, getStandardConstraintsForValueGetter(fields.size()));
     }));
     UiResultGetter standard = dialog.getResultGetter();
     dialog.setResultGetter(((panel, names, values, fields) -> {
@@ -87,7 +87,7 @@ public class CarsUi extends UiDbTable {
     dialog.changeUI(((panel, names, values, fields) -> {
       panel.remove(fields.get(fields.size() - 1));
       fields.remove(fields.size() - 1);
-      panel.add(checkBox, dialog.getStandardConstraintsForValueGetter(fields.size()));
+      panel.add(checkBox, getStandardConstraintsForValueGetter(fields.size()));
     }));
     UiResultGetter standard = dialog.getResultGetter();
     dialog.setResultGetter(((panel, names, values, fields) -> {
