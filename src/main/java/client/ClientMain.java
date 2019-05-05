@@ -8,12 +8,12 @@ import java.awt.*;
 
 public class ClientMain {
   public static void main(String[] args) {
-//    LoginDialog loginDialog = new LoginDialog();
-//    loginDialog.setVisible(true);
-//    loginDialog.dispose();
-//    if (!loginDialog.isAuthorised()) {
-//      return;
-//    }
+    LoginDialog loginDialog = new LoginDialog();
+    loginDialog.setVisible(true);
+    loginDialog.dispose();
+    if (!loginDialog.isAuthorised()) {
+      return;
+    }
     MainWindow window = new MainWindow();
     JFrame frame = new JFrame();
     frame.setContentPane(window.getMainPanel());
