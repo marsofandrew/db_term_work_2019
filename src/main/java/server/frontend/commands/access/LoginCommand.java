@@ -45,6 +45,9 @@ public class LoginCommand extends GetCommand {
     }
 
     List<JsonObject> dbResponse = dbConnectorInterface.select(PASSWORD, TABLE_NAME, "WHERE username = " + createAndCheckStringVar(username));
+    if (dbResponse == null|| dbResponse.isEmpty()){
+      throw new SQLException("Password or user name is incorrect", "Invalid password or username", 401);
+    }
     String dbPassword = dbResponse.get(0).getString(PASSWORD);
     if (!countHash(password).equals(dbPassword)) {
       throw new SQLException("Password or user name is incorrect", "Invalid password or username", 401);
